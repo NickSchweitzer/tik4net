@@ -79,7 +79,7 @@ namespace tik4net
         /// <seealso cref="Close"/>
         void Open(string host, int port, string user, string password);
 
-#if !(NET20 || NET35 || NET40)
+#if !(NET20 || NET35 || NET40 || NET46)
         /// <summary>
         /// Opens connection to the specified mikrotik host on default port (depends on technology) and perform the logon operation.
         /// Awaitable version. Default timeout is <see cref="ReceiveTimeout"/>x2 or 5s if not set.

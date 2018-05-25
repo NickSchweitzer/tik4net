@@ -65,7 +65,7 @@ namespace tik4net
             return result;
         }
 
-#if !(NET20 || NET35 || NET40)
+#if !(NET20 || NET35 || NET40 || NET46)
         /// <summary>
         /// Creates and opens connection to the specified mikrotik host on default port and perform the logon operation.
         /// Async version.

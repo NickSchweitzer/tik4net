@@ -102,7 +102,7 @@ namespace tik4net.Api
 
         public void Open(string host, int port, string user, string password)
         {
-#if NET20 || NET35 || NET40
+#if NET20 || NET35 || NET40 || NET46
             OpenSyncInternal(host, port, user, password);          
 #else
             bool success;
@@ -121,7 +121,7 @@ namespace tik4net.Api
 #endif
         }
 
-#if !(NET20 || NET35 || NET40)
+#if !(NET20 || NET35 || NET40 || NET46)
         public async System.Threading.Tasks.Task OpenAsync(string host, string user, string password)
         {
             await OpenAsync(host, _isSsl ? APISSL_DEFAULT_PORT : API_DEFAULT_PORT, user, password);
@@ -133,7 +133,7 @@ namespace tik4net.Api
         }
 #endif
 
-#if NET20 || NET35 || NET40
+#if NET20 || NET35 || NET40 || NET46
         private void OpenSyncInternal(string host, int port, string user, string password)
 #else
         private async System.Threading.Tasks.Task OpenAsyncInternal(string host, int port, string user, string password)
@@ -145,7 +145,7 @@ namespace tik4net.Api
                 _tcpConnection.SendTimeout = _sendTimeout;
             if (_receiveTimeout > 0)
                 _tcpConnection.ReceiveTimeout = _receiveTimeout;
-#if NET20 || NET35 || NET40
+#if NET20 || NET35 || NET40 || NET46
             _tcpConnection.Connect(host, port);
 #else
             await _tcpConnection.ConnectAsync(host, port);
@@ -164,7 +164,7 @@ namespace tik4net.Api
             {
                 var sslStream = new SslStream(tcpStream, false,
                     new RemoteCertificateValidationCallback(ValidateServerCertificate), null);                
-#if NET20 || NET35 || NET40
+#if NET20 || NET35 || NET40 || NET46
                 sslStream.AuthenticateAsClient(host/*, cCollection, SslProtocols.Default, true*/);
 #else
                 await sslStream.AuthenticateAsClientAsync(host);
