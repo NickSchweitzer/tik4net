@@ -127,6 +127,10 @@ namespace tik4net.Objects
                     return int.Parse(strValue);
                 else if (PropertyType == typeof(long))
                     return long.Parse(strValue);
+                else if (PropertyType == typeof(double))
+                    return double.Parse(strValue);
+                else if (PropertyType == typeof(float))
+                    return float.Parse(strValue);
                 else if (PropertyType == typeof(bool))
                     return string.Equals(strValue, "true", StringComparison.OrdinalIgnoreCase) || string.Equals(strValue, "yes", StringComparison.OrdinalIgnoreCase);
 #if NET20 || NET35 || NET40
@@ -173,6 +177,10 @@ namespace tik4net.Objects
                 return ((int)propValue).ToString();
             else if (PropertyType == typeof(long))
                 return ((long)propValue).ToString();
+            else if (PropertyType == typeof(double))
+                return ((double)propValue).ToString();
+            else if (PropertyType == typeof(float))
+                return ((float)propValue).ToString();
             else if (PropertyType == typeof(bool))
                 return ((bool)propValue) ? "yes" : "no"; //TODO add attribute definition for support true/false
 #if NET20 || NET35 || NET40 
